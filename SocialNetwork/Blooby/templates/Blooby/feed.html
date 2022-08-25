@@ -1,45 +1,7 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'twitter/layout.html' %}
+{% load humanize %}
+{% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What's happening?</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Asap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    
-    <link rel="shortcut icon" href="../static/img/tab-icon.png" type="image/x-icon">
-</head>
-
-<body>
-
-    <div class="container-fluid" style="padding: 0;">
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" style="color: white;" href="#">
-                <!-- Twitter logo -->
-                <img src="{% static 'img/twitter-brands.svg' %}" width="30" height="30" class="d-inline-block align-top" alt="">
-                <!-- Twitter logo -->
-                Twttr Clone
-            </a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="hi mr-auto">
-
-                </ul>
-                <!-- Nav Bar -->
-                <a href="{% url 'home' %}" class="btn text-white my-2 my-sm-0" type="submit">Inicio</a>
-                <a href="{% url 'logout' %}" class="btn text-white my-2 my-sm-0" type="submit">Logout</a>
-                <!-- Nav Bar -->
-            </div>
-        </nav>
-    </div>
-
-    {% block content %}
     <div id="main" class="container-fluid d-flex">
         <!-- Barra Izquierda -->
         <div class="sidebar m-5 d-none d-md-block">
@@ -47,24 +9,24 @@
                 <div class="card " style="width: 18rem; text-align:center;border-radius: 20px;">
                     <img class="card-img-top rounded-circle"
                         style="width:60%; position: relative;left: 62px;padding-top: 20px;"
-                        src="https://i.pinimg.com/736x/ea/f2/2e/eaf22e6a189f76ed24054e2ca7feb00f.jpg" alt="Card image cap">
+                        src="{{ request.user.profile.image.url }}" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title font-weight-bold">Tony Stark</h5>
-                        <h6 class="card-title font-weight-bold">@iron_man</h6>
+                        <h5 class="card-title font-weight-bold">{{ request.user.first_name }}</h5>
+                        <h6 class="card-title font-weight-bold">@{{ request.user }}</h6>
                         
 
-                        <p class="card-text">You know who i am. </p>
+                        <p class="card-text">{{ request.user.profile.bio }}</p>
                         <h6 class="card-title font-weight-bold">
-                        100 Followers   
-                        100 Following
+                        {{ request.user.profile.followers.count }} Followers   
+                        {{ request.user.profile.following.count }} Following
                         </h6>
                         <a href="#" class="btn  text-white rounded-pill">Mi perfil</a>
                     </div>
 
                 </div>
-                <button id="addATweetLeft" onclick="addTweet()" type="button"
+                <a href="{% url 'editar' %}" id="addATweetLeft" onclick="addTweet()" type="button"
                 style="border-radius: 30px; font-size: 1.1rem; font-weight:bold;"
-                class="btn btn-lg btn-block mt-4 text-white ">Editar mi perfil</button>
+                class="btn btn-lg btn-block mt-4 text-white ">Editar mi perfil</a>
             </div>
         </div>
         <!-- End Barra Izquierda -->
@@ -76,14 +38,14 @@
                 <div class="d-flex">
                     <div class="col-xs">
                         <!-- Image form -->
-                        <img src="https://i.pinimg.com/736x/ea/f2/2e/eaf22e6a189f76ed24054e2ca7feb00f.jpg" alt="" class="avator">
+                        <img src="{{ request.user.profile.image.url }}" alt="" class="avator">
                         <!-- Formulario -->
                     </div>
 
                     <!-- Formulario -->
-                    <form class="col pr-0">
-                        <textarea class="form-control w-100" id="contentsBox"
-                            placeholder="What's happening?"></textarea>
+                    <form class="col pr-0" method="post">
+                        {% csrf_token %}
+                        {{ form.content }}
                         <div class="container d-flex" style="padding: 1rem 0 0 0;">
                             <div id="leftBtn">
                                 <div id="charBadge" class="badge badge-pill badge-primary ml-2"
@@ -106,17 +68,20 @@
             </div>
 
             <!-- Tweets -->
+            {% for post in posts %}
             <div id="tweetCards">
                 <!-- FOR LOOP HERE -->
                 <div class="tweet-wrap" style="border-radius:20px">
                     <div class="tweet-header">
-                        <img src="https://toppng.com/uploads/preview/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png"
+                        <img src="{{ post.user.profile.image.url }}"
                             alt="" class="avator">
                         <div class="tweet-header-info">
-                            * based snow bunny <span>@yumjeezy</span><span>. Jun 27
+                            <a href="{% url 'profile' post.user %}">
+                            {{ post.user.first_name }} 
+                            </a>
+                            <span>@{{ post.user }}</span><span>{{ post.timestamp|naturaltime }}
                             </span>
-                            <p>🔥 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. </p>
+                            <p>{{ post.content }}</p>
                         </div>
                     </div>
                     <div class="tweet-info-counts">
@@ -162,20 +127,20 @@
                         </div>
 
                         <!-- DELETE -->
+                        {% if request.user == post.user %}
                         <div class="trash">
-                            <a href="#" style="background: white; border: none;">
+                            <a href="{% url 'delete' post.id %}" style="background: white; border: none;">
                                 <i class="fa fa-trash-o" style="color:#657786; font-size: 20px" aria-hidden="true"></i>
                             </a>
                         </div>
+                        {% endif %}
                         <!-- END-DELETE -->
                     </div>
                 </div>
                 <!-- FOR LOOP HERE -->
-
             </div>
+            {% endfor %}
             <!-- EndTweets -->
-
-
         </div>
         <!-- End Center -->
 
@@ -187,27 +152,11 @@
                     Who to Follow
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="https://twitter.com/playboicarti" style="text-decoration: none;color: #657787;">@playboicarti</a></li>
-                    <li class="list-group-item"><a href="https://twitter.com/LILUZIVERT" style="text-decoration: none;color: #657787;">@LILUZIVERT</a></li>
-                    <li class="list-group-item"><a href="https://twitter.com/NARUTO_kousiki" style="text-decoration: none;color: #657787;">@NARUTO_kousiki</a></li>
+                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@mundopython</a></li>
+                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@mundopython</a></li>
+                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@mundopython</a></li>
                 </ul>
             </div>
         </div>
     </div>
-    {% endblock content %}
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="{% static 'js/script.js' %}"></script>
-
-</body>
-
-</html>
+{% endblock content %}
