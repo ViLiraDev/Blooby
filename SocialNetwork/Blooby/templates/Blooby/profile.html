@@ -100,11 +100,13 @@
                         </div>
 
                         <!-- DELETE -->
+                        {% if request.user == post.user %}
                         <div class="trash">
-                            <a href="#" style="background: white; border: none;">
+                            <a href="{% url 'delete' post.id %}" style="background: white; border: none;">
                                 <i class="fa fa-trash-o" style="color:#657786; font-size: 20px" aria-hidden="true"></i>
                             </a>
                         </div>
+                        {% endif %}
                         <!-- END-DELETE -->
                     </div>
                 </div>
@@ -123,15 +125,14 @@
         <div class="sidebar m-5 d-none d-xl-block">
             <div class="card" style="width: 18rem;">
                 <div class="card-header">
-                    Who to Follow
+                    People To Follow
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@mundopython</a></li>
-                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@mundopython</a></li>
-                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@mundopython</a></li>
+                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@storm</li>
+                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@Serginhio</a></li>
+                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@Faraon</a></li>
                 </ul>
             </div>
         </div>
     </div>
-
-{% endblock content %}
+    {% endblock content %}

@@ -12,4 +12,6 @@ urlpatterns = [
 	path('login/', LoginView.as_view(template_name='Blooby/login.html'), name='login'),
 	path('logout/', LogoutView.as_view(), name='logout'),
 	path('delete/<int:post_id>/', delete, name='delete'),
+    path('follow/<str:username>/', follow, name='follow'),
+	path('unfollow/<str:username>/', unfollow, name='unfollow'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

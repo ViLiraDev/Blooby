@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'Blooby',
+    'Blooby.apps.BloobyConfig',
     'django.contrib.humanize',
     'django.contrib.admin',
     'django.contrib.auth',
