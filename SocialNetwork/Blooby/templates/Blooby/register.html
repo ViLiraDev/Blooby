@@ -5,31 +5,40 @@
     <div class="twitter-login-box">
         <header>
             <img src="https://static01.nyt.com/images/2014/08/10/magazine/10wmt/10wmt-jumbo-v4.jpg?quality=90&auto=webp" alt="twitter logo">
-            <h1>Inicia Sesión</h1>
+            <h1>Registrate en Blooby</h1>
         </header>
 
         <form method="post">
             {% csrf_token %}
             <div class="input-wrapper">
+                <label for="user-name-id">First Name</label>
+                {{ form.first_name }}
+            </div>
+            <div class="input-wrapper">
                 <label for="user-name-id">Username</label>
                 {{ form.username }}
+            </div>
+            <div class="input-wrapper">
+                <label for="user-name-id">Email</label>
+                {{ form.email }}
             </div>
 
             <div class="input-wrapper">
                 <label for="password-id">Password</label>
-                {{ form.password }}
+                {{ form.password1 }}
             </div>
-            {% if form.errors %}
-            <p>Username or password not correct.</p>
-            {% endif %}
+            <div class="input-wrapper">
+                <label for="password-id">Confirm Password</label>
+                {{ form.password2 }}
+            </div>
 
-            <button class="twitter-btn">Log in</button>
+            <button class="twitter-btn">Registrarse</button>
         </form>
 
         <div class="footer">
-            <a href="#">Forget Password</a> . 
-            <a href="{% url 'register' %}">Sign up to twitter</a>
+            <a href="{% url 'login' %}">¿Ya tienes una cuenta? Login</a>
         </div>
 
     </div>
+
 {% endblock content %}

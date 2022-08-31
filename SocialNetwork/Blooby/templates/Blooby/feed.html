@@ -20,7 +20,7 @@
                         {{ request.user.profile.followers.count }} Followers   
                         {{ request.user.profile.following.count }} Following
                         </h6>
-                        <a href="#" class="btn  text-white rounded-pill">Mi perfil</a>
+                        <a href="{% url 'profile' user %}" class="btn  text-white rounded-pill">Mi perfil</a>
                     </div>
 
                 </div>
