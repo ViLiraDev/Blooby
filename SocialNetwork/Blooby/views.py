@@ -1,8 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Profile, Post , Relationship
 from .forms import UserRegisterForm, PostForm, ProfileUpdateForm, UserUpdateForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy, reverse
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -81,3 +83,4 @@ def unfollow(request, username):
 	rel = Relationship.objects.get(from_user=current_user.id, to_user=to_user_id)
 	rel.delete()
 	return redirect('home')
+

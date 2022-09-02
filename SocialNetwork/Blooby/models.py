@@ -27,14 +27,29 @@ class Profile(models.Model):
 
 class Post(models.Model):
 	timestamp = models.DateTimeField(default=timezone.now)
-	content = models.TextField()
+	content = models.TextField(max_length=300)
 	user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
+	liked = models.ManyToManyField(User, default=None, blank=True)
 
 	class Meta:
 		ordering = ['-timestamp']
 
 	def __str__(self):
 		return self.content
+
+	@property
+	def num_likes(self):
+		return self.liked.all().count()
+
+LIKE_CHOICES = (
+	('Like', 'Like'),
+	('Unlike', 'Unlike'),
+)
+
+class Like(models.Model):
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	post = models.ForeignKey(Post, on_delete=models.CASCADE)
+	value = models.CharField(choices=LIKE_CHOICES ,default='Like', max_length=10)
 
 class Relationship(models.Model):
 	from_user = models.ForeignKey(User, related_name='relationships', on_delete=models.CASCADE)
@@ -44,11 +59,11 @@ class Relationship(models.Model):
 		return f'{self.from_user} to {self.to_user}'
 
 
-
-
-
-
-
+class Comment(models.Model):
+	post = models.ForeignKey(Post, related_name="comments", on_delete=models.CASCADE)
+	name = models.ForeignKey(User,related_name="user_name" , on_delete=models.CASCADE)
+	body = models.TextField()
+	timestamp = models.DateTimeField(default=timezone.now)
 
 
 

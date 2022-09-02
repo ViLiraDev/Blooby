@@ -15,7 +15,7 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     
-    <link rel="shortcut icon" href="../static/img/tab-icon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'img/patito512px.png' %}" type="image/x-icon">
 </head>
 
 <body>
@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-lg navbar-light">
             <a class="navbar-brand" href="{% url 'home' %}" style="color: white;" href="#">
                 <!-- Twitter logo -->
-                <img src="{% static 'img/twitter-brands.svg' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+                <img src="{% static 'img/patito512px.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
                 <!-- Twitter logo -->
                 Blooby
             </a>
@@ -89,13 +89,13 @@
                             <div id="leftBtn">
                                 <div id="charBadge" class="badge badge-pill badge-primary ml-2"
                                     style="display: flex;align-items: center;width: 50%;justify-content: center;">
-                                    <div id="charCountArea">140</div>
+                                    <div id="charCountArea">300</div>
                                 </div>
                             </div>
 
                             <div id="rightBtn">
                                 <button class="btn rounded-pill"
-                                    style="width: 100%;">Tweet</button>
+                                    style="width: 100%;">Bloob</button>
                             </div>
                         </div>
                     </form>
@@ -207,7 +207,7 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/countscript.js' %}"></script>
 
 </body>
 

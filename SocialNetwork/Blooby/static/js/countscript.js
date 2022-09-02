@@ -24,7 +24,7 @@ let tweetList = []
 let id = 0;
 
 let countChar = () => {
-	let remainingChar = 140 - textArea.value.length;
+	let remainingChar = 300 - textArea.value.length;
 	if (remainingChar < 0) {
 		document.getElementById('charCountArea').innerHTML = `${remainingChar}`.fontcolor('red');
 
