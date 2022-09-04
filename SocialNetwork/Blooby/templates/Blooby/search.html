@@ -1,0 +1,24 @@
+{% extends 'Blooby/_base.html' %}
+{% load static %}
+
+{% block title %} 
+
+   {{Titulo}}
+
+{% endblock %}
+
+
+
+
+
+
+{% block body %}
+
+<form action="{% url 'search' %}" method="GET"> {% csrf_token %}
+   
+    <input type="" name="search">
+      
+</form>
+
+
+{% endblock %}

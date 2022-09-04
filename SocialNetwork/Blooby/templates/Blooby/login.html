@@ -1,10 +1,10 @@
 {% extends 'Blooby/_base.html' %}
-
+{% load static %}
 {% block content %}
 <body class="login-page">
     <div class="twitter-login-box">
         <header>
-            <img src="https://static01.nyt.com/images/2014/08/10/magazine/10wmt/10wmt-jumbo-v4.jpg?quality=90&auto=webp" alt="twitter logo">
+            <img src="{% static 'img/patito512px.png' %}" alt="twitter logo">
             <h1>Inicia Sesión</h1>
         </header>
 
@@ -28,7 +28,7 @@
 
         <div class="footer">
             <a href="#">Forget Password</a> . 
-            <a href="{% url 'register' %}">Sign up to twitter</a>
+            <a href="{% url 'register' %}">Sign up to Blooby</a>
         </div>
 
     </div>

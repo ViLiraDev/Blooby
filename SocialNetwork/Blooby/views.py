@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Profile, Post , Relationship
 from .forms import UserRegisterForm, PostForm, ProfileUpdateForm, UserUpdateForm
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
+from django.db.models import Q
 
 # Create your views here.
 
@@ -83,4 +84,23 @@ def unfollow(request, username):
 	rel = Relationship.objects.get(from_user=current_user.id, to_user=to_user_id)
 	rel.delete()
 	return redirect('home')
+
+def search(request):
+    return render(request, 'Blooby/search.html')
+
+
+def search_user(request):
+    searchs = request.GET.get('search')
+    users = User.objects.all()  
+
+    if searchs:
+        users = User.objects.filter(
+            Q(username__icontains = searchs) |
+            Q(first_name__icontains = searchs) 
+        ).distinct()
+
+        return render(request, 'Blooby/search_result.html', {'users':users})
+    else:
+        users = False
+        return render(request, 'Blooby/search_result.html', {'users':users})
 

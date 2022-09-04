@@ -1,7 +1,18 @@
 {% extends 'Blooby/_base.html' %}
-{% load humanize %}
-{% block content %}
 {% load static %}
+{% load humanize %}
+
+{% block navbar %}
+<a href="{% url 'logout' %}" class="btn text-white my-2 my-sm-0" type="submit">Logout</a>
+<form action="{% url 'search_user' %}" class="" method="GET">
+        <input type="text" class="" placeholder="Search User..." name="search" value="{{request.GET.search}}">
+            <button class="" type="submit">
+              <i class=''>Search</i>      
+            </button>
+</form>
+
+{% endblock navbar %}
+{% block content %}
 
     <div id="main" class="container-fluid d-flex">
         <!-- Barra Izquierda -->

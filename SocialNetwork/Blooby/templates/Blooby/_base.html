@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
     
     <link rel="shortcut icon" href="{% static 'img/patito512px.png' %}" type="image/x-icon">
 </head>
@@ -28,15 +28,17 @@
                 <!-- Twitter logo -->
                 Blooby
             </a>
+            {% block navbar %}
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="hi mr-auto">
 
                 </ul>
                 <!-- Nav Bar -->
-                <a href="{% url 'home' %}" class="btn text-white my-2 my-sm-0" type="submit">Home</a>
-                <a href="{% url 'logout' %}" class="btn text-white my-2 my-sm-0" type="submit">Logout</a>
+                
+                
                 <!-- Nav Bar -->
             </div>
+            {% endblock navbar %}
         </nav>
     </div>
 

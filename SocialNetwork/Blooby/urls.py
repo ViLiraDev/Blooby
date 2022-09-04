@@ -14,4 +14,6 @@ urlpatterns = [
 	path('delete/<int:post_id>/', delete, name='delete'),
     path('follow/<str:username>/', follow, name='follow'),
 	path('unfollow/<str:username>/', unfollow, name='unfollow'),
+    path("search_user/", search_user, name='search_user'),
+    path("search/", search, name='search'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
