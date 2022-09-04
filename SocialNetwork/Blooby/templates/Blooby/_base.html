@@ -13,12 +13,12 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilo.css' %}">
+    <link rel="stylesheet" href="{% static 'css/darkmode.css' %}">
     <link rel="shortcut icon" href="{% static 'img/patito512px.png' %}" type="image/x-icon">
 </head>
 
-<body>
+<body class="dark">
 
     <div class="container-fluid" style="padding: 0;">
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -28,6 +28,7 @@
                 <!-- Twitter logo -->
                 Blooby
             </a>
+            
             {% block navbar %}
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="hi mr-auto">
@@ -125,7 +126,7 @@
                     <div class="tweet-info-counts">
 
                         <div class="comments">
-                            <button style="background: white; border: none;"> 
+                            <button id="comentario">
                             <svg class="feather feather-message-circle sc-dnqmqq jxshSx" xmlns="http://www.w3.org/2000/svg"
                                 width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -138,7 +139,7 @@
                         </div>
 
                         <div class="retweets">
-                            <button style="background: white; border: none;"> 
+                            <button> 
                             <svg class="feather feather-repeat sc-dnqmqq jxshSx" xmlns="http://www.w3.org/2000/svg"
                                 width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -152,7 +153,7 @@
                         </div>
 
                         <div class="likes">
-                            <button style="background: white; border: none;"> 
+                            <button> 
                             <svg class="feather feather-heart sc-dnqmqq jxshSx" xmlns="http://www.w3.org/2000/svg"
                                 width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -166,7 +167,7 @@
 
                         <!-- DELETE -->
                         <div class="trash">
-                            <a href="#" style="background: white; border: none;">
+                            <a href="#">
                                 <i class="fa fa-trash-o" style="color:#657786; font-size: 20px" aria-hidden="true"></i>
                             </a>
                         </div>

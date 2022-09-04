@@ -1,0 +1,114 @@
+body.dark{
+    background-color: #1E1E1E;
+}
+
+
+body.dark .card-header {
+    background-color: #11476e /*#E0245E*/;
+    color: rgb(87, 86, 86);
+    text-align: center;
+    font-weight: bold;
+    border: none;
+  }
+
+body.dark .tweet-wrap {
+    max-width: 490px;
+    background: rgb(87, 86, 86);
+    margin: 0 auto;
+    margin-top: 50px;
+    border-radius: 3px;
+    padding: 30px;
+    border-bottom: 1px solid rgb(87, 86, 86);
+    border-top: 1px solid rgb(87, 86, 86);
+  }
+
+body.dark .form-control{
+    background-color: #1E1E1E;
+}
+
+
+body.dark .comments #btn-comments{
+    background-color: #1E1E1E; border: none;
+}
+
+body.dark .comments.element.style {
+    background: rgb(29, 28, 28);
+    border: none;
+}
+
+body.dark .card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: rgb(87, 86, 86);
+    background-clip: border-box;
+    border-radius: 0.25rem;
+}
+
+body.dark .card-header {
+    background-color: #1E96EB /*#E0245E*/;
+    color: #1E1E1E;
+    text-align: center;
+    font-weight: bold;
+    border: none;
+  }
+
+body.dark .list-group-item {
+    position: relative;
+    display: block;
+    padding: 0.75rem 1.25rem;
+    background-color: #161616;
+    border: 1pxsolidrgba(0,0,0,.125);
+}
+
+body.dark #darkmode{
+    background-image: url(https://eltallerdehector.com/2022/02/04/baby-yoda-png-sin-fondo/);
+}
+
+body.dark #textsearcher{
+    background-color: #1E1E1E;
+}
+
+body.dark #comentario{
+    background: rgb(19, 18, 18);
+    background-image: initial;
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: rgb(32, 31, 31);
+    border: none;
+    border-top-color: initial;
+    border-top-style: none;
+    border-top-width: initial;
+    border-right-color: initial;
+    border-right-style: none;
+    border-right-width: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: initial;
+    border-left-color: initial;
+    border-left-style: none;
+    border-left-width: initial;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    }
+
+body.dark .tweet-header-info span {
+        color: #9cbcd6;
+        font-weight: normal;
+        margin-left: 5px;
+    }
+
+    body.dark {
+        color: #cfcece;
+    }

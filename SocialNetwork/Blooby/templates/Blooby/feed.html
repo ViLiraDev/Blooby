@@ -3,15 +3,17 @@
 {% load humanize %}
 
 {% block navbar %}
-<a href="{% url 'logout' %}" class="btn text-white my-2 my-sm-0" type="submit">Logout</a>
-<form action="{% url 'search_user' %}" class="" method="GET">
-        <input type="text" class="" placeholder="Search User..." name="search" value="{{request.GET.search}}">
+
+<form action="{% url 'search_user' %}" class="" style="margin-left: 25rem;" method="GET">
+        <input type="text" id="textsearcher" class="" placeholder="Search User..." name="search" value="{{request.GET.search}}">
             <button class="" type="submit">
               <i class=''>Search</i>      
             </button>
 </form>
-
-{% endblock navbar %}
+<a href="{% url 'logout' %}" class="btn text-white my-2 my-sm-0" style="margin-left: 11rem;" type="submit">Logout</a>
+<a id="darkmode" href="javascript:void(0)" style="margin-left: 12.1rem;"> <img src="{% static 'img/NightMode.png' %}" width="100" height="50" class="d-inline-block align-top" alt="">
+</a>
+    {% endblock navbar %}
 {% block content %}
 
     <div id="main" class="container-fluid d-flex">
