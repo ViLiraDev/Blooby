@@ -65,9 +65,6 @@ body.dark .list-group-item {
     border: 1pxsolidrgba(0,0,0,.125);
 }
 
-body.dark #darkmode{
-    background-image: url(https://eltallerdehector.com/2022/02/04/baby-yoda-png-sin-fondo/);
-}
 
 body.dark #textsearcher{
     background-color: #1E1E1E;
