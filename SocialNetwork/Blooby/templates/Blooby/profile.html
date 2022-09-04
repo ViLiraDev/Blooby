@@ -32,9 +32,11 @@
                     </div>
 
                 </div>
+                {% if request.user == user %}
                 <a href="{% url 'editar' %}" id="addATweetLeft" onclick="addTweet()" type="button"
                 style="border-radius: 30px; font-size: 1.1rem; font-weight:bold;"
                 class="btn btn-lg btn-block mt-4 text-white ">Editar mi perfil</a>
+                {% endif %}
             </div>
         </div>
         <!-- End Barra Izquierda -->

@@ -2,6 +2,7 @@ body {
     background: #E6E8E9; /*15202b*/;
     font-family: 'Asap', sans-serif;
     font-family: 'Roboto', sans-serif;
+    transition: background-color .6s;
   }
   
   img {

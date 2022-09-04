@@ -27,14 +27,6 @@ body.dark .form-control{
 }
 
 
-body.dark .comments #btn-comments{
-    background-color: #1E1E1E; border: none;
-}
-
-body.dark .comments.element.style {
-    background: rgb(29, 28, 28);
-    border: none;
-}
 
 body.dark .card {
     position: relative;
@@ -66,8 +58,9 @@ body.dark .list-group-item {
 }
 
 
+
 body.dark #textsearcher{
-    background-color: #1E1E1E;
+    background-color: white;
 }
 
 body.dark #comentario{
@@ -109,3 +102,4 @@ body.dark .tweet-header-info span {
     body.dark {
         color: #cfcece;
     }
+

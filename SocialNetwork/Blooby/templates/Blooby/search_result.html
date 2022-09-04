@@ -3,13 +3,15 @@
 {% load humanize %}
 
 {% block navbar %}
-<a href="{% url 'logout' %}" class="btn text-white my-2 my-sm-0" type="submit">Logout</a>
-<form action="{% url 'search_user' %}" class="" method="GET">
-        <input type="text" class="" placeholder="Search User..." name="search" value="{{request.GET.search}}">
-            <button class="" type="submit">
-              <i class=''>Search</i>      
-            </button>
+
+<form action="{% url 'search_user' %}" class="" style="margin-left: 25rem;" method="GET">
+    <input type="text" id="textsearcher" class="" placeholder="Search User..." name="search" value="{{request.GET.search}}">
+        <button class="" type="submit">
+          <i class=''>Search</i>      
+        </button>
 </form>
+<a href="{% url 'logout' %}" class="btn text-white my-2 my-sm-0" style="margin-left: 11rem;" type="submit">Logout</a>
+<a id="darkmode" href="javascript:void(0)" style="margin-left: 12.1rem;"> <img src="{% static 'img/NightMode.png' %}" width="100" height="50" class="d-inline-block align-top" alt=""></a>
 
 {% endblock navbar %}
 {% block content %}
@@ -22,42 +24,28 @@
                         <div class="card " style="width: 18rem; text-align:center;border-radius: 20px;">
                             <img class="card-img-top rounded-circle"
                                 style="width:60%; position: relative;left: 62px;padding-top: 20px;"
-                                src="{{ request.user.profile.image.url }}" alt="Card image cap">
+                                src="{{ user.profile.image.url }}" alt="Card image cap">
                             <div class="card-body">
-                                <h5 class="card-title font-weight-bold">{{ request.user.first_name }}</h5>
-                                <h6 class="card-title font-weight-bold">@{{ request.user }}</h6>
+                                <h5 class="card-title font-weight-bold">{{ user.first_name }}</h5>
+                                <h6 class="card-title font-weight-bold">@{{ user }}</h6>
                                 
 
-                                <p class="card-text">{{ request.user.profile.bio }}</p>
+                                <p class="card-text">{{ user.profile.bio }}</p>
                                 <h6 class="card-title font-weight-bold">
-                                {{ request.user.profile.followers.count }} Followers   
-                                {{ request.user.profile.following.count }} Following
+                                {{ user.profile.followers.count }} Followers   
+                                {{ user.profile.following.count }} Following
                                 </h6>
-                                <a href="{% url 'profile' user %}" class="btn  text-white rounded-pill">Mi perfil</a>
+                                <a href="{% url 'profile' user %}" class="btn  text-white rounded-pill">Ver Perfil</a>
                             </div>
 
                         </div>
-                        <a href="{% url 'editar' %}" id="addATweetLeft" onclick="addTweet()" type="button"
-                        style="border-radius: 30px; font-size: 1.1rem; font-weight:bold;"
-                        class="btn btn-lg btn-block mt-4 text-white ">Editar mi perfil</a>
+                        
                     </div>
                 </div>
                 <!-- End Barra Izquierda -->
-
-                <!-- Barra Derecha -->
-                <div class="sidebar m-5 d-none d-xl-block">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-header">
-                            Trending Topics
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@storm</a></li>
-                            <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@Serginhio</a></li>
-                            <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@Faraon</a></li>
-                        </ul>
-                    </div>
-                </div>
+                
             </div>
         {% endfor %}
     {% endif %}
+    
 {% endblock content %}
