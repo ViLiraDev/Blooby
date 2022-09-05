@@ -34,7 +34,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'Blooby.apps.BloobyConfig',
     'chats',
-    'channels',
     'django.contrib.humanize',
     'django.contrib.admin',
     'django.contrib.auth',
