@@ -19,6 +19,7 @@
         {%for user in users%}
             <div id="main" class="container-fluid d-flex">
                 <!-- Barra Izquierda -->
+                
                 <div class="sidebar m-5 d-none d-md-block">
                     <div class="">
                         <div class="card " style="width: 18rem; text-align:center;border-radius: 20px;">
@@ -28,8 +29,6 @@
                             <div class="card-body">
                                 <h5 class="card-title font-weight-bold">{{ user.first_name }}</h5>
                                 <h6 class="card-title font-weight-bold">@{{ user }}</h6>
-                                
-
                                 <p class="card-text">{{ user.profile.bio }}</p>
                                 <h6 class="card-title font-weight-bold">
                                 {{ user.profile.followers.count }} Followers   

@@ -16,4 +16,5 @@ urlpatterns = [
 	path('unfollow/<str:username>/', unfollow, name='unfollow'),
     path("search_user/", search_user, name='search_user'),
     path("search/", search, name='search'),
+    path("topfollowers/",top_followers, name="topfollowers")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

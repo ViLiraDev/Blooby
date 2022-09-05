@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'Blooby.apps.BloobyConfig',
+    'chats',
+    'channels',
     'django.contrib.humanize',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -70,7 +72,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'SocialNetwork.wsgi.application'
+#WSGI_APPLICATION = 'SocialNetwork.wsgi.application'
+ASGI_APPLICATION = 'SocialNetwork.asgi.application'
 
 
 # Database
@@ -108,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'es-es'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Argentina/Buenos_Aires'
 
 USE_I18N = True
 
@@ -123,6 +126,9 @@ LOGOUT_REDIRECT_URL = 'login'
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'

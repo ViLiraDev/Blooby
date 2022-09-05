@@ -104,3 +104,7 @@ def search_user(request):
         users = False
         return render(request, 'Blooby/search_result.html', {'users':users})
 
+def top_followers(request):
+	top = User.objects()#.order_by('-relationships')[:5]
+	return render(request, 'Blooby/topfollowers.html', {'top':top})
+
