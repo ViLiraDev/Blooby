@@ -2,6 +2,7 @@ from django.db import models
 from Blooby.models import User
 from django.contrib.auth import get_user_model
 from django.db.models import Q
+from django.utils import timezone
 
 # Create your models here.
 class ThreadManager(models.Manager):
@@ -28,4 +29,4 @@ class ChatMessage(models.Model):
     thread = models.ForeignKey(Thread, null=True, blank=True, on_delete=models.CASCADE, related_name='chatmessage_thread')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     message = models.TextField()
-    timestamp = models.DateTimeField(auto_now_add=True)
+    timestamp = models.DateTimeField(default=timezone.now)
