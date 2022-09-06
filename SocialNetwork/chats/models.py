@@ -1,8 +1,10 @@
+from email.mime import image
 from django.db import models
 from Blooby.models import User
 from django.contrib.auth import get_user_model
 from django.db.models import Q
 from django.utils import timezone
+from Blooby.models import Profile
 
 # Create your models here.
 class ThreadManager(models.Manager):
@@ -19,6 +21,7 @@ class Thread(models.Model):
                                      related_name='thread_second_person')
     updated = models.DateTimeField(auto_now=True)
     timestamp = models.DateTimeField(auto_now_add=True)
+    
 
     objects = ThreadManager()
     class Meta:
