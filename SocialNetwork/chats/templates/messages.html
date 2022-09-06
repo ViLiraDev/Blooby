@@ -16,7 +16,7 @@
 	<body>
     {% if user.is_authenticated %}
     <div>
-        <h1 style="text-align: end; padding-right: 10px">Logged in as : {{ user.username }}</h1>
+        <h1 style="text-align: end; padding-right: 10px">Usuario : {{ user.username }}</h1>
         <input type="hidden" id="logged-in-user" value="{{ user.id }}">
         
     </div>
@@ -49,7 +49,7 @@
                                                 <span>{{ thread.first_person.username }}</span>
                                             {% endif %}
 
-{#                                            <p>Kalid is online</p>#}
+{#                                            <p>asd</p>#}
                                         </div>
                                     </div>
                                 </li>
@@ -76,17 +76,14 @@
                                         </div>
                                         <div class="user_info">
                                             {% if thread.first_person == user %}
-                                                    <span>Chat with {{ thread.second_person.username }}</span>
+                                                    <span> {{ thread.second_person.username }}</span>
                                             {% else %}
-                                                <span>Chat with {{ thread.first_person.username }}</span>
+                                                <span> {{ thread.first_person.username }}</span>
                                             {% endif %}
 
                                             <p>{{ thread.chatmessage_thread.all.count }} messages</p>
                                         </div>
-                                        <div class="video_cam">
-                                            <span><i class="fas fa-video"></i></span>
-                                            <span><i class="fas fa-phone"></i></span>
-                                        </div>
+                                        
                                     </div>
                                     <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
                                     <div class="action_menu">

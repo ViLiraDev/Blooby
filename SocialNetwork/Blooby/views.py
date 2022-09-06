@@ -12,6 +12,7 @@ from django.db.models import Q
 @login_required
 def home(request):
 	posts = Post.objects.all()
+	users = User.objects.all()
 	if request.method == 'POST':
 		form = PostForm(request.POST)
 		if form.is_valid():
@@ -22,7 +23,7 @@ def home(request):
 	else:
 		form = PostForm()
 
-	context = {'posts':posts, 'form' : form }
+	context = {'posts':posts, 'form' : form , 'users': users}
 	return render(request, 'Blooby/feed.html', context)
 
 def register(request):
@@ -46,8 +47,9 @@ def delete(request, post_id):
 
 def profile(request, username):
 	user = User.objects.get(username=username)
+	users = User.objects.all()
 	posts = user.posts.all()
-	context = {'user':user, 'posts':posts}
+	context = {'user':user, 'posts':posts, 'users': users}
 	return render(request, 'Blooby/profile.html', context)
 
 @login_required

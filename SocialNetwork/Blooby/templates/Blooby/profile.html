@@ -127,13 +127,14 @@
         <div class="sidebar m-5 d-none d-xl-block">
             <div class="card" style="width: 18rem;">
                 <div class="card-header">
-                    People To Follow
+                    People To Follow!
                 </div>
+                {% for user in users %}
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@storm</li>
-                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@Serginhio</a></li>
-                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@Faraon</a></li>
+                    <li class="list-group-item"><a href="{% url 'profile' user %}" style="text-decoration: none;color: #657787;">@{{ user.username }}</li>
+                    
                 </ul>
+                {% endfor %}
             </div>
         </div>
     </div>

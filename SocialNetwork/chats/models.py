@@ -4,7 +4,6 @@ from Blooby.models import User
 from django.contrib.auth import get_user_model
 from django.db.models import Q
 from django.utils import timezone
-from Blooby.models import Profile
 
 # Create your models here.
 class ThreadManager(models.Manager):

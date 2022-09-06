@@ -11,8 +11,9 @@
             </button>
 </form>
 
-<a href="{% url 'logout' %}" class="btn text-white my-2 my-sm-0" style="margin-left: 11rem;" type="submit">Logout</a>
-<a id="darkmode" href="javascript:void(0)" style="margin-left: 12.1rem;"> <img src="{% static 'img/NightMode.png' %}" width="100" height="50" class="d-inline-block align-top" alt="">
+<a href="chat" class="btn text-white my-2 my-sm-0" style="margin-left: 11rem;" type="submit">Chat</a>
+<a href="{% url 'logout' %}" class="btn text-white my-2 my-sm-0" style="margin-left: 1rem;" type="submit">Logout</a>
+<a id="darkmode" href="javascript:void(0)" style="margin-left: 7.1rem;"> <img src="{% static 'img/NightMode.png' %}" width="100" height="50" class="d-inline-block align-top" alt="">
 </a>
     {% endblock navbar %}
 {% block content %}
@@ -164,13 +165,14 @@
         <div class="sidebar m-5 d-none d-xl-block">
             <div class="card" style="width: 18rem;">
                 <div class="card-header">
-                    Trending Topics
+                    People To Follow!
                 </div>
+                {% for user in users %}
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@storm</a></li>
-                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@Serginhio</a></li>
-                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@Faraon</a></li>
+                    <li class="list-group-item"><a href="{% url 'profile' user %}" style="text-decoration: none;color: #657787;">@{{user.username}}</a></li>
+                    
                 </ul>
+                {% endfor %}
             </div>
         </div>
     </div>

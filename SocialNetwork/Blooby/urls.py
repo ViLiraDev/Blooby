@@ -3,6 +3,7 @@ from Blooby.views import *
 from django.contrib.auth.views import LoginView, LogoutView
 from django.conf import settings
 from django.conf.urls.static import static
+from SocialNetwork.urls import *
 
 urlpatterns = [
     path('', home, name='home'),
@@ -16,5 +17,6 @@ urlpatterns = [
 	path('unfollow/<str:username>/', unfollow, name='unfollow'),
     path("search_user/", search_user, name='search_user'),
     path("search/", search, name='search'),
-    path("topfollowers/",top_followers, name="topfollowers")
+    path("topfollowers/",top_followers, name="topfollowers"),
+    path('chat/', include ('chats.urls'), name='chat'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
