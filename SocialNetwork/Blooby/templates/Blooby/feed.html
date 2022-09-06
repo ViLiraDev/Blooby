@@ -142,7 +142,7 @@
                         </div>
 
                         <!-- DELETE -->
-                        {% if request.user == post.user or user.is_staff%}
+                        {% if request.user == post.user or user.is_staff %}
                         <div class="trash">
                             <a href="{% url 'delete' post.id %}">
                                 <i class="fa fa-trash-o" style="color:#657786; font-size: 20px" aria-hidden="true"></i>
