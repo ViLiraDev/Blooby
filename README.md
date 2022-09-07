@@ -20,9 +20,9 @@ _Esta version se creó con:
 
 ### Componentes 🔧
 
-Página principal: http://127.0.0.1:8000/TPFinal/
+Página principal: http://127.0.0.1:8000/
 
-Página para crear un nuevo usuario: http://127.0.0.1:8000/TPFinal/CrearUsuario/
+Página de Chats: http://127.0.0.1:8000/chat
 
 
 
