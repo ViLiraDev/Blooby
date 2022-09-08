@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-j88h!6hm9q_@ouj9##8texw_g+x=@6r!s6@sgqjg7n*wbn*qyr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['https://blooby-socialnetwork.herokuapp.com/']
 
